@@ -1,0 +1,24 @@
+@import "../../variables.scss";
+
+.container{
+
+    text-align: center;
+    margin-top: 11%;
+}
+
+.header{
+    color: white;
+
+    h2{
+        font-family: $font-subtitle;
+        font-size: 300%;
+    }
+    h1{
+        font-family: $font-title;
+        font-size: 370%;
+    }
+}
+
+.buttons{
+    margin-top: 4.5%;
+}
