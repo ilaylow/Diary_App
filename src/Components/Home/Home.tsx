@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, StylesProvider } from "@material-ui/core";
 import styles from "./home.module.scss";
 import { styled } from "@material-ui/core";
 import SlideToggle from "react-slide-toggle";
@@ -22,6 +22,16 @@ export const HomeButton = styled(Button)({
 
 export const Home: React.FC = () => {
     
+    const [isSignUp, setSignUp] = useState(true);
+    const [isOpen, setOpen] = useState(false);
+
+    const showForm = (toggleFunc, bool) => {
+        if (!isOpen){
+            toggleFunc();
+            setOpen(!isOpen);
+        }
+        setSignUp(bool);
+    }
 
     return (
         <div className = {styles.container}>
@@ -33,11 +43,11 @@ export const Home: React.FC = () => {
             render = {({toggle, setCollapsibleElement, progress}) => (
                 <div>
                     <div className = {styles.buttons}>
-                        <HomeButton onClick = {toggle}>Login</HomeButton>
-                        <HomeButton onClick = {toggle}>Sign Up</HomeButton>
+                        <HomeButton onClick = {() => {showForm(toggle, false)}}>Login</HomeButton>
+                        <HomeButton onClick = {() => {showForm(toggle, true)}}>Sign Up</HomeButton>
                     </div>
-                    <div ref = {setCollapsibleElement}>
-                        <Homeform/>
+                    <div ref = {setCollapsibleElement} className = {styles.form}>
+                        <Homeform isSignup = {isSignUp}/>
                     </div>
                 </div>
             )}>        
