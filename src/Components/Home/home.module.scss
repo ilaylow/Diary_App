@@ -3,11 +3,12 @@
 .container{
 
     text-align: center;
-    margin-top: 8%;
+    margin-top: 5%;
 }
 
 .header{
     color: white;
+    line-height: 3rem;
 
     h2{
         font-family: $font-subtitle;
@@ -20,9 +21,14 @@
 }
 
 .buttons{
-    margin-top: 4.5%;
+    margin-top: 1%;
 }
 
 .form{
+    align-content: center;
+    margin: auto;
     margin-top: 2.5%;
+    margin-left: 12%;
+    width: 70%;
+
 }

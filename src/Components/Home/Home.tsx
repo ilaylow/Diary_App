@@ -7,7 +7,7 @@ import { Homeform } from "../Homeform/Homeform";
 
 export const HomeButton = styled(Button)({
     color: "white",
-    fontFamily: "Lato",
+    fontFamily: "Consolas",
     fontSize: "120%",
     marginLeft: "1%",
     marginRight: "1%",
