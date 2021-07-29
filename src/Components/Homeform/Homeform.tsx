@@ -4,6 +4,9 @@ import { useState } from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { styled } from '@material-ui/styles';
 import { Input } from './Input';
+import { signin, signup } from "../../actions/auth";
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
     isSignup: boolean;
@@ -46,18 +49,24 @@ const initialState = {firstName: "", lastName: "", email: "", password: ""}
 export const Homeform: React.FC<Props> = ({isSignup}) => {
 
     const styles = useStyles();
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
     const [userState, setUserState] = useState(initialState);
 
     const handleInput = (event) => {
         setUserState({...userState, [event.target.name]: event.target.value})
-        console.log("test");
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // Want to print out user details
         console.log(userState);
+        if (isSignup){
+            dispatch(signup(userState, history));
+        } else{
+            dispatch(signin(userState, history));
+        }
     }
 
     return (

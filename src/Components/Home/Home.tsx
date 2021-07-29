@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, StylesProvider } from "@material-ui/core";
+import FadeIn from 'react-fade-in';
+import { Button } from "@material-ui/core";
 import styles from "./home.module.scss";
 import { styled } from "@material-ui/core";
 import SlideToggle from "react-slide-toggle";
@@ -35,6 +36,7 @@ export const Home: React.FC = () => {
 
     return (
         <div className = {styles.container}>
+            <FadeIn>
             <div className = {styles.header}>
                 <h2>Welcome To</h2>
                 <h1>Dye-RE.io</h1>
@@ -52,6 +54,7 @@ export const Home: React.FC = () => {
                 </div>
             )}>        
             </SlideToggle>
+            </FadeIn>
         </div>
     )
 }
