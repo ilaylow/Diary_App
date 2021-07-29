@@ -2,8 +2,8 @@ import React from 'react'
 import {Avatar, Button, Paper, Grid, Typography, Container, TextField, makeStyles} from '@material-ui/core'
 import { useState } from 'react';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { styled } from '@material-ui/styles';
 import { Input } from './Input';
-//import styles from "./homeform.module.scss";
 
 interface Props {
     isSignup: boolean;
@@ -29,17 +29,35 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
+const SubmitButton = styled(Button)({
+    color: "white",
+    background: "blue",
+    fontWeight: "bold",
+    marginTop: "3%",
+    width: "35%",
+
+    "&:hover":{
+        backgroundColor: "blue",
+    }
+})
+
+const initialState = {firstName: "", lastName: "", email: "", password: ""}
+
 export const Homeform: React.FC<Props> = ({isSignup}) => {
 
     const styles = useStyles();
     const [showPassword, setShowPassword] = useState(false);
+    const [userState, setUserState] = useState(initialState);
 
     const handleInput = (event) => {
+        setUserState({...userState, [event.target.name]: event.target.value})
         console.log("test");
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // Want to print out user details
+        console.log(userState);
     }
 
     return (
@@ -66,6 +84,7 @@ export const Homeform: React.FC<Props> = ({isSignup}) => {
                         type = {showPassword ? "text" : "password"}
                         handleShowPassword = {() => {setShowPassword(!showPassword)}}/>
                     </Grid>
+                    <SubmitButton onClick = {handleSubmit}>Submit</SubmitButton>
                 </form>
             </Paper>
         </Container>

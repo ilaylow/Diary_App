@@ -12,6 +12,8 @@ const port = process.env.PORT || 3000;
 app.use(cors())
 app.use(bodyParser.json())
 
+app.use('/user', userRoutes);
+
 const uri = process.env.ATLAS_URI;
 console.log(uri);
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});

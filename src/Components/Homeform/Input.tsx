@@ -11,8 +11,9 @@ interface InputProps {
     handleChange: (event: any) => void;
     handleShowPassword?: (event: any) => void;
     type?: string;
-
 }
+
+
 
 export const Input: React.FC<InputProps> = ({name, label, autoFocus, half, handleChange, type, handleShowPassword}) => {
     return (
@@ -30,7 +31,7 @@ export const Input: React.FC<InputProps> = ({name, label, autoFocus, half, handl
                 endAdornment: (
                     <InputAdornment position = "end">
                         <IconButton onClick = {handleShowPassword}>
-                            {type === "password" ? <Visibility/> : <VisibilityOff/>}
+                            {type === "password" ? <VisibilityOff/> : <Visibility/>}
                         </IconButton>
                     </InputAdornment>
                 ),
