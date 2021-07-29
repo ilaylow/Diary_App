@@ -1,10 +1,9 @@
 const express = require("express");
-
-import { } from '../controllers/users.js';
+import { signin, signup } from '../controllers/users.js';
 
 const router = express.Router();
 
 router.post('/signin', signin);
-router.post('signup', signup);
+router.post('/signup', signup);
 
-router.get('/',)
+module.exports = router;
