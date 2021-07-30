@@ -1,7 +1,7 @@
-const bcrypt = require('bycryptjs');
-const jwt = require("jsonwebtoken");
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken"
 
-import User from "../models/user.js";
+import {User} from "../models/user.js";
 
 const errorMessageResponseSignIn = {message: "Invalid Credentials. Incorrect Username or Password"};
 const errorMessageResponseSignUp = {message: "User already exists!"}

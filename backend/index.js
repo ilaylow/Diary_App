@@ -1,12 +1,13 @@
-const userRouter = require("./routes/users")
-const express = require("express");
-const bodyParser = require("body-parser")
-const cors = require("cors");
-const mongoose = require("mongoose");
-const path = require('path')
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import path from "path";
+import cors from "cors";
+import userRouter from "./routes/users.js";
+import dotenv from "dotenv";
 
-require('dotenv').config({ path: path.resolve(__dirname, './.env') })
-console.log(path.resolve(__dirname, '../.env'))
+dotenv.config()
+//console.log(path.resolve(__dirname, '../.env'))
 const app = express();
 const port = process.env.PORT || 3000;
 
