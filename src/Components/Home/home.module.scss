@@ -1,34 +1,31 @@
 @import "../../variables.scss";
 
-.container{
-
-    text-align: center;
-    margin-top: 5%;
+.container {
+  text-align: center;
 }
 
-.header{
-    color: white;
-    line-height: 3rem;
+.header {
+  color: white;
+  line-height: 3rem;
 
-    h2{
-        font-family: $font-subtitle;
-        font-size: 300%;
-    }
-    h1{
-        font-family: $font-title;
-        font-size: 450%;
-    }
+  h2 {
+    font-family: $font-subtitle;
+    font-size: 300%;
+  }
+  h1 {
+    font-family: $font-title;
+    font-size: 450%;
+  }
 }
 
-.buttons{
-    margin-top: 1%;
+.buttons {
+  margin-top: 1%;
 }
 
-.form{
-    align-content: center;
-    margin: auto;
-    margin-top: 2.5%;
-    margin-left: 12%;
-    width: 70%;
-
+.form {
+  align-content: center;
+  margin: auto;
+  margin-top: 1%;
+  margin-left: 12%;
+  width: 70%;
 }

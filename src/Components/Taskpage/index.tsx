@@ -1,69 +1,124 @@
 import React from "react";
-import {Grid, Container, makeStyles, Paper, Typography, TextField} from "@material-ui/core";
-import { Input } from '../Homeform/Input';
-import { useState }from "react";
+import {
+  Grid,
+  Container,
+  makeStyles,
+  Paper,
+  Typography,
+  Button,
+} from "@material-ui/core";
+import { styled } from "@material-ui/core";
+import { Input } from "../Homeform/Input";
+import { useState } from "react";
 
-interface Props{
+interface Props {}
 
-}
-
-const font1 = "Indie Flower, cursive";
+export const font1 = "Indie Flower, cursive";
 
 const useStyles = makeStyles((theme) => ({
-    container:{
-        float: "left",
-        textAlign: "center",
-        marginLeft: "3%",
-        border: "solid white",
-        marginTop: "10%",
-    },
+  container: {
+    float: "left",
+    paddingLeft: "0%",
+    marginTop: "6%",
+    minHeight: "60vh",
+  },
 
-    paper:{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        margin: "auto",
-        padding: theme.spacing(1),
-        width: "80%",
-    },
-    form: {
-        marginTop: "5%",
-        width: "50%"
-    },
-    
-    inputField1: {
-        width: "80%",
-        float: "left",
-        marginLeft: "5%",
-        fontFamily: font1,
-    }
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    marginLeft: "14%",
+    padding: theme.spacing(1),
+    width: "60%",
+    height: "100%",
+  },
+  form: {
+    marginTop: "5%",
+    width: "50%",
+  },
+
+  inputStyle: {
+    fontFamily: font1,
+  },
+
+  inputField1: {
+    width: "150%",
+    float: "left",
+    marginLeft: "24%",
+  },
+
+  inputField2: {
+    width: "155%",
+    float: "left",
+    marginTop: "12%",
+    marginLeft: "22%",
+  },
 }));
 
-const initialTask = {title : "", prority: "", description: ""}
+const initialTask = { title: "", prority: "", description: "" };
 
-export const Taskpage : React.FC<Props> = ({}) => {
-    const styles = useStyles();
+const DoneButton = styled(Button)({
+  marginTop: "5%",
+  backgroundColor: "blue",
+  color: "white",
+  width: "60%",
+  margin: "auto",
+  fontWeight: "bold",
 
-    const [taskState, setTaskState] = useState(initialTask);
+  "&:hover": {
+    backgroundColor: "blue",
+  },
+});
 
-    const handleInput = (e) => {
-        setTaskState({...taskState, [e.target.name]: e.target.value})
-    }
+export const Taskpage: React.FC<Props> = ({}) => {
+  const styles = useStyles();
 
-    return (
-        <div style = {{border: "solid white"}}>
-            <Container component = "main" maxWidth = "md" className = {styles.container}>
-                <Paper elevation = {3} className = {styles.paper}>
-                    <Typography style = {{fontFamily: font1, fontWeight: "bold"}} 
-                    component = "h1" 
-                    variant = "h5">What are you planning for today?</Typography>
-                    <form className = {styles.form}>
-                        <Grid container spacing = {3}>
-                            <Input name = "title" label = "Title" autoFocus  handleChange = {handleInput} variant = "standard" style = {styles.inputField1}/>
-                        </Grid>
-                    </form>
-                </Paper>
-            </Container>
-        </div>
-    )
-}
+  const [taskState, setTaskState] = useState(initialTask);
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTaskState({ ...taskState, [e?.target.name]: e?.target.value });
+  };
+
+  const handleFormSubmit = (e: React.ChangeEvent<{}>) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div>
+      <Container component="main" maxWidth="md" className={styles.container}>
+        <Paper elevation={5} className={styles.paper}>
+          <Typography
+            style={{ fontFamily: font1, fontWeight: "bold", marginTop: "3%" }}
+            component="h1"
+            variant="h4"
+          >
+            What are you planning for today?
+          </Typography>
+          <form className={styles.form}>
+            <Input
+              name="title"
+              label="Title"
+              autoFocus
+              handleChange={handleInput}
+              variant="standard"
+              style={styles.inputField1}
+              inputStyle={styles.inputStyle}
+            />
+            {/* Insert in priority manager here */}
+            <Input
+              name="description"
+              label="Description"
+              autoFocus
+              rows={10}
+              required={false}
+              multiline={true}
+              handleChange={handleInput}
+              variant="outlined"
+              style={styles.inputField2}
+            />
+          </form>
+          <DoneButton>Done</DoneButton>
+        </Paper>
+      </Container>
+    </div>
+  );
+};
