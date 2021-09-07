@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 
 const uri = process.env.ATLAS_URI;
 console.log(uri);
